@@ -20,11 +20,16 @@
 # Docs: https://www.gitpod.io/docs/config-gitpod-file/
 
 tasks:
-  - before: PIP_USER=false pip install pre-commit && pre-commit install
   - init: ./breeze -y
-
+  - name: Install pre-commit
+    command: |
+      pip install pre-commit
+      pre-commit install
+    env:
+      PIP_USER: "false"
   - openMode: split-right
     command: echo for running integration test with breeze
+
 # Ports to expose on workspace startup
 ports:
   - port: 8000
