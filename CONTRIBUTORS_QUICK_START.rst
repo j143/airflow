@@ -1876,6 +1876,10 @@ Setting up Breeze
 2. Once the breeze environment is initialized, create airflow tables and users from the breeze CLI. ``airflow db reset``
    is required to execute at least once for Airflow Breeze to get the database/tables created.
 
+.. note::
+
+   This step is needed when you would like to run/use webserver.
+
 .. code-block:: bash
 
   root@b76fcb399bb6:/opt/airflow# airflow db reset
@@ -2051,6 +2055,15 @@ All Tests are inside ``./tests`` directory.
   - Types of tests
 
   - Running specific type of test
+
+  .. note::
+
+     Before starting a new instance, let's clear the volume and databases "fresh like a daisy". You
+     can do this by:
+
+     .. code-block::bash
+
+       $ breeze stop
 
   .. code-block:: bash
 
