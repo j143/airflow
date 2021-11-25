@@ -22,13 +22,13 @@
 tasks:
   - init: ./breeze -y
   - name: Install pre-commit
+    openMode: split-right
     command: |
       pip install pre-commit
       pre-commit install
+      echo "for running integration test with breeze"
     env:
       PIP_USER: "false"
-  - openMode: split-right
-    command: echo for running integration test with breeze
 
 # Ports to expose on workspace startup
 ports:
