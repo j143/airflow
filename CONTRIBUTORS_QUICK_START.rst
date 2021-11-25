@@ -1943,7 +1943,7 @@ Using Breeze
      * 23306 -> forwarded to MySQL database  -> mysql:3306
      * 21433 -> forwarded to MSSQL database  -> mssql:1443
      * 26379 -> forwarded to Redis broker -> redis:6379
-  
+
    Here are links to those services that you can use on host:
      * ssh connection for remote debugging: ssh -p 12322 airflow@127.0.0.1 pw: airflow
      * Webserver: http://127.0.0.1:28080
@@ -2015,7 +2015,7 @@ All Tests are inside ``./tests`` directory.
    rootdir: /opt/airflow, configfile: pytest.ini
    plugins: anyio-3.3.4, flaky-3.7.0, asyncio-0.16.0, cov-3.0.0, forked-1.3.0, httpx-0.15.0, instafail-0.4.2, rerunfailures-9.1.1, timeouts-1.2.1, xdist-2.4.0, requests-mock-1.9.3
    setup timeout: 0.0s, execution timeout: 0.0s, teardown timeout: 0.0s
-   collected 4 items                                                                                           
+   collected 4 items
 
    tests/utils/test_session.py::TestSession::test_raised_provide_session PASSED                          [ 25%]
    tests/utils/test_session.py::TestSession::test_provide_session_without_args_and_kwargs PASSED         [ 50%]

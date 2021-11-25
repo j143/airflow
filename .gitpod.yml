@@ -21,7 +21,7 @@
 
 tasks:
   - init: ./breeze -y
-    
+
   - openMode: split-right
     command: echo for running integration test with breeze
 # Ports to expose on workspace startup
