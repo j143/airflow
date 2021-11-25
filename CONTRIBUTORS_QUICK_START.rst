@@ -1905,7 +1905,7 @@ Gitpod default image have all the required packages installed.
 
 .. code-block:: bash
 
-  export PATH=${PATH}:"/home/${USER}/Projects/airflow"
+  export PATH=${PATH}:"/workspace/airflow"
   source ~/.bashrc
 
 
