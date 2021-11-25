@@ -1896,3 +1896,114 @@ Setting up Breeze
   $ ./breeze stop
 
 
+Installing airflow with breeze.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Gitpod default image have all the required packages installed.
+
+1. Add following line to ~/.bashrc in order to call breeze command from anywhere.
+
+.. code-block:: bash
+
+  export PATH=${PATH}:"/home/${USER}/Projects/airflow"
+  source ~/.bashrc
+
+
+Starting development
+--------------------
+
+
+Creating a branch
+~~~~~~~~~~~~~~~~~
+
+1. Click on the branch symbol in the status bar
+
+   .. raw:: html
+
+      <div align="center" style="padding-bottom:10px">
+        <img src="images/quick_start/vscode_creating_branch_1.png"
+             alt="Creating a new branch">
+      </div>
+
+2. Give a name to a branch and checkout
+
+   .. raw:: html
+
+      <div align="center" style="padding-bottom:10px">
+        <img src="images/quick_start/vscode_creating_branch_2.png"
+             alt="Giving a name to a branch">
+      </div>
+
+
+
+Testing
+~~~~~~~
+
+All Tests are inside ./tests directory.
+
+- Running Unit tests inside Breeze environment.
+
+  Just run ``pytest filepath+filename`` to run the tests.
+
+.. code-block:: bash
+
+   root@4a2143c17426:/opt/airflow# pytest tests/utils/test_session.py
+   ======================================= test session starts =======================================
+   platform linux -- Python 3.7.12, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- /usr/local/bin/python
+   cachedir: .pytest_cache
+   rootdir: /opt/airflow, configfile: pytest.ini
+   plugins: anyio-3.3.4, flaky-3.7.0, asyncio-0.16.0, cov-3.0.0, forked-1.3.0, httpx-0.15.0, instafail-0.4.2, rerunfailures-9.1.1, timeouts-1.2.1, xdist-2.4.0, requests-mock-1.9.3
+   setup timeout: 0.0s, execution timeout: 0.0s, teardown timeout: 0.0s
+   collected 4 items                                                                                           
+
+   tests/utils/test_session.py::TestSession::test_raised_provide_session PASSED                          [ 25%]
+   tests/utils/test_session.py::TestSession::test_provide_session_without_args_and_kwargs PASSED         [ 50%]
+   tests/utils/test_session.py::TestSession::test_provide_session_with_args PASSED                       [ 75%]
+   tests/utils/test_session.py::TestSession::test_provide_session_with_kwargs PASSED                     [100%]
+
+====================================== 4 passed, 11 warnings in 33.14s ======================================
+
+- Running All the test with Breeze by specifying required python version, backend, backend version
+
+.. code-block:: bash
+
+   $ breeze --backend mysql --mysql-version 5.7 --python 3.8 --db-reset --test-type All  tests
+
+
+- Running specific test in container using shell scripts. Testing in container scripts are located in
+  ``./scripts/in_container`` directory.
+
+.. code-block:: bash
+
+   root@4a2143c17426:/opt/airflow# ls ./scripts/in_container/
+   _in_container_script_init.sh  quarantine_issue_header.md                 run_mypy.sh
+   _in_container_utils.sh        run_anything.sh                            run_prepare_airflow_packages.sh
+   airflow_ci.cfg                run_ci_tests.sh                            run_prepare_provider_documentation.sh
+   bin                           run_docs_build.sh                          run_prepare_provider_packages.sh
+   check_environment.sh          run_extract_tests.sh                       run_resource_check.sh
+   check_junitxml_result.py      run_fix_ownership.sh                       run_system_tests.sh
+   configure_environment.sh      run_flake8.sh                              run_tmux_welcome.sh
+   entrypoint_ci.sh              run_generate_constraints.sh                stop_tmux_airflow.sh
+   entrypoint_exec.sh            run_init_script.sh                         update_quarantined_test_status.py
+   prod                          run_install_and_test_provider_packages.sh
+
+   root@df8927308887:/opt/airflow# ./scripts/in_container/run_docs_build.sh
+
+- Running specific type of test
+
+  - Types of tests
+
+  - Running specific type of test
+
+  .. code-block:: bash
+
+    $ breeze --backend mysql --mysql-version 5.7 --python 3.8 --db-reset --test-type Core
+
+
+- Running Integration test for specific test type
+
+  - Running an Integration Test
+
+  .. code-block:: bash
+
+   $ breeze --backend mysql --mysql-version 5.7 --python 3.8 --db-reset --test-type All --integration mongo
