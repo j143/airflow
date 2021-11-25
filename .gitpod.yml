@@ -24,9 +24,7 @@ tasks:
   - name: Install pre-commit
     openMode: split-right
     command: |
-      if ! grep -q "export PIP_USER=no" "$HOME/.bashrc"; then
-        printf '%s\n' "export PIP_USER=no" >> "$HOME/.bashrc";
-      fi
+      printf '%s\n' "export PIP_USER=no" >> "$HOME/.bashrc"
       pip install pre-commit
       pre-commit install
       echo "for running integration test with breeze"
