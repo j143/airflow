@@ -25,6 +25,7 @@ tasks:
     openMode: split-right
     command: |
       printf '%s\n' "export PIP_USER=no" >> "$HOME/.bashrc"
+      source "$HOME/.bashrc"
       pip install pre-commit
       pre-commit install
       echo "for running integration test with breeze"
