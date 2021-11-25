@@ -20,6 +20,7 @@
 # Docs: https://www.gitpod.io/docs/config-gitpod-file/
 
 tasks:
+  - before: PIP_USER=false pip install pre-commit && pre-commit install
   - init: ./breeze -y
 
   - openMode: split-right
