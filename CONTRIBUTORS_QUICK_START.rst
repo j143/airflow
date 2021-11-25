@@ -1909,6 +1909,63 @@ Gitpod default image have all the required packages installed.
   source ~/.bashrc
 
 
+Using Breeze
+~~~~~~~~~~~~
+
+1. Starting breeze environment using ``breeze start-airflow`` starts Breeze environment with last configuration run.
+   It also automatically starts webserver, backend and scheduler. It drops you in tmux with scheduler in bottom left
+   and webserver in bottom right. Use ``[Ctrl + B] and Arrow keys`` to navigate.
+
+.. code-block:: bash
+
+  $ breeze start-airflow
+
+      Use CI image.
+
+   Branch name:            main
+   Docker image:           ghcr.io/apache/airflow/main/ci/python3.8:latest
+   Airflow source version: 2.3.0.dev0
+   Python version:         3.8
+   Backend:                mysql 5.7
+
+
+   Port forwarding:
+
+   Ports are forwarded to the running docker containers for webserver and database
+     * 12322 -> forwarded to Airflow ssh server -> airflow:22
+     * 28080 -> forwarded to Airflow webserver -> airflow:8080
+     * 25555 -> forwarded to Flower dashboard -> airflow:5555
+     * 25433 -> forwarded to Postgres database -> postgres:5432
+     * 23306 -> forwarded to MySQL database  -> mysql:3306
+     * 21433 -> forwarded to MSSQL database  -> mssql:1443
+     * 26379 -> forwarded to Redis broker -> redis:6379
+  
+   Here are links to those services that you can use on host:
+     * ssh connection for remote debugging: ssh -p 12322 airflow@127.0.0.1 pw: airflow
+     * Webserver: http://127.0.0.1:28080
+     * Flower:    http://127.0.0.1:25555
+     * Postgres:  jdbc:postgresql://127.0.0.1:25433/airflow?user=postgres&password=airflow
+     * Mysql:     jdbc:mysql://127.0.0.1:23306/airflow?user=root
+     * Redis:     redis://127.0.0.1:26379/0
+
+.. raw:: html
+
+      <div align="center" style="padding-bottom:10px">
+        <img src="images/quick_start/start_airflow_tmux_gitpod.png"
+             alt="Accessing local airflow">
+      </div>
+
+2. You can access the ports as shown
+
+.. raw:: html
+
+      <div align="center" style="padding-bottom:10px">
+        <img src="images/quick_start/airflow_gitpod_open_ports.png"
+             alt="Accessing ports via VSCode UI">
+      </div>
+
+
+
 Starting development
 --------------------
 
