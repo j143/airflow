@@ -1896,7 +1896,7 @@ Setting up Breeze
   $ ./breeze stop
 
 
-Installing airflow with breeze.
+Installing Airflow with Breeze.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Gitpod default image have all the required packages installed.
@@ -1996,7 +1996,7 @@ Creating a branch
 Testing
 ~~~~~~~
 
-All Tests are inside ./tests directory.
+All Tests are inside ``./tests`` directory.
 
 - Running Unit tests inside Breeze environment.
 
@@ -2018,9 +2018,9 @@ All Tests are inside ./tests directory.
    tests/utils/test_session.py::TestSession::test_provide_session_with_args PASSED                       [ 75%]
    tests/utils/test_session.py::TestSession::test_provide_session_with_kwargs PASSED                     [100%]
 
-====================================== 4 passed, 11 warnings in 33.14s ======================================
+   ====================================== 4 passed, 11 warnings in 33.14s ======================================
 
-- Running All the test with Breeze by specifying required python version, backend, backend version
+- Running All the tests with Breeze by specifying required Python version, backend, backend version
 
 .. code-block:: bash
 
