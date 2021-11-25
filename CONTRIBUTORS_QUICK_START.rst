@@ -1818,3 +1818,81 @@ describes how to do it.
 .. raw:: html
 
   </details>
+
+
+Setup and develop using Gitpod online workspaces
+################################################
+
+.. raw:: html
+
+  <details>
+    <summary>Setup and develop using Gitpod online workspaces</summary>
+
+
+
+Setup Airflow with Breeze
+-------------------------
+
+
+Forking and cloning Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Goto |airflow_github| and fork the project.
+
+   .. |airflow_github| raw:: html
+
+     <a href="https://github.com/apache/airflow/" target="_blank">https://github.com/apache/airflow/</a>
+
+   .. raw:: html
+
+     <div align="center" style="padding-bottom:10px">
+       <img src="images/quick_start/airflow_fork.png"
+            alt="Forking Apache Airflow project">
+     </div>
+
+2. Goto your github account's fork of airflow click on ``Code`` and copy the clone link.
+
+   .. raw:: html
+
+      <div align="center" style="padding-bottom:10px">
+        <img src="images/quick_start/airflow_clone.png"
+             alt="Cloning github fork of Apache airflow">
+      </div>
+
+3. Add goto https://gitpod.io/#<copied-url> as shown.
+
+   .. raw:: html
+
+      <div align="center" style="padding-bottom:10px">
+        <img src="images/quick_start/airflow_gitpod_url.png"
+             alt="Open personal airflow clone with Gitpod">
+      </div>
+
+Setting up Breeze
+~~~~~~~~~~~~~~~~~
+
+1. Breeze is already initialized in one of the terminals in Gitpod
+
+2. Once the breeze environment is initialized, create airflow tables and users from the breeze CLI. ``airflow db reset``
+   is required to execute at least once for Airflow Breeze to get the database/tables created.
+
+.. code-block:: bash
+
+  root@b76fcb399bb6:/opt/airflow# airflow db reset
+  root@b76fcb399bb6:/opt/airflow# airflow users create --role Admin --username admin --password admin \
+    --email admin@example.com --firstname foo --lastname bar
+
+
+3. Closing Breeze environment. After successfully finishing above command will leave you in container,
+   type ``exit`` to exit the container
+
+.. code-block:: bash
+
+  root@b76fcb399bb6:/opt/airflow#
+  root@b76fcb399bb6:/opt/airflow# exit
+
+.. code-block:: bash
+
+  $ ./breeze stop
+
+
